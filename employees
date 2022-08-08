@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+// Design a class named Employee. The class should keep the following information:
+// a. Employee name  b. Employee number  c. Hire date
+class Employee
+{
+protected:
+  string empName, empHireDate;
+  int empNumber;
+
+public:
+  // Write one or more constructors, and the appropriate accessor and mutator functions, for the class.
+  // constructor
+  Employee() {}
+  // getters or accessors
+  string getempName() { return empName; }
+  string getHireDate() { return empHireDate; }
+  int getempNumber() { return empNumber; }
+
+  // setter or mutators
+  void setempName(string _empName) { empName = _empName; }
+  void setHireDate(string _empHireDate) { empHireDate = _empHireDate; }
+  void setempNumber(int _empNumber) { empNumber = _empNumber; }
+};
+// In addition to a salary, the shift supervisor earns a yearly bonus
+class ShiftSupervisor : public Employee
+{
+protected:
+  double annual_salary, annual_production_bonnus;
+
+public:
+  ShiftSupervisor() {}
+  ShiftSupervisor(string _empName, string _empHireDate, int _empNumber, double _annual_salary, double _annual_production_bonnus)
+  {
+    empName = _empName;
+    empHireDate = _empHireDate;
+    empNumber = _empNumber;
+    annual_production_bonnus = _annual_production_bonnus;
+    annual_salary = _annual_salary;
+  }
+  // getters
+  double getAnnualSalary() { return annual_salary; }
+
+  double getAnnualProdutionBonnus() { return annual_production_bonnus; }
+  // seller
+  void setAnnualSalary(double _annual_salary) { annual_salary = _annual_salary; }
+  void setAnnualProductionBonnus(double _annual_production_bonnus) { annual_production_bonnus = _annual_production_bonnus; }
+
+  // display
+  void displayProductionAnnualBonnus()
+  {
+    cout << endl
+         << "Employee number ..........: " << empNumber << endl
+         << "Employee name.............: " << empName << endl
+         << "Hire date ................: " << empHireDate << endl
+         << "Annual Salary ............: " << annual_salary << endl
+         << "Annual production bonnus .: " << annual_production_bonnus << endl
+         << "---------------------------------------------" << endl;
+  }
+};
+
+int main()
+{
+
+  ShiftSupervisor s[5];
+  s[0] = ShiftSupervisor("John", "2020-03-20", 30, 120000, 10000);
+  s[1] = ShiftSupervisor("Jeff", "2020-04-15", 30, 110000, 10000);
+  s[2] = ShiftSupervisor("Mark", "2020-05-10", 30, 100000, 10000);
+
+  s[0].displayProductionAnnualBonnus();
+  s[0].getAnnualSalary();
+  s[0].setAnnualSalary(160000);
+  s[0].getAnnualProdutionBonnus();
+  s[0].setAnnualProductionBonnus(12000);
+  s[0].displayProductionAnnualBonnus();
+
+  return 0;
+}
